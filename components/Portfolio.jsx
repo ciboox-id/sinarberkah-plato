@@ -35,7 +35,7 @@ const Portfolio = () => {
               {gallery.map((index) => {
                 return (
                   <div className="wrapper">
-                    <img src={`http://localhost:4000/${index.image}`} alt="" />
+                    <img src={`https://api-plato.vercel.app/${index.image}`} alt="" />
                   </div>
                 )
               })}
