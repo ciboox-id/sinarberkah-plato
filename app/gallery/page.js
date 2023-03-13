@@ -5,7 +5,7 @@ const Gallery = () => {
     <section>
       <div className="container px-5 py-24 mx-auto">
         <div className="flex flex-col text-center w-full mb-20">
-          <h1 className="sm:text-4xl text-3xl font-medium title-font mb-4 text-gray-900">Gallery Pola Sinar Berkah</h1>
+          <h1 className="sm:text-4xl text-3xl font-bold title-font mb-4 text-gray-900">Gallery Pola Sinar Berkah</h1>
           <p className="lg:w-2/3 mx-auto leading-relaxed text-base font-medium text-gray">Kami percaya bahwa seni memiliki kekuatan untuk menginspirasi, mentransformasi, dan menghubungkan orang dari berbagai latar belakang dan budaya. Oleh karena itu, kami berusaha menciptakan lingkungan yang ramah dan inklusif di mana semua orang dapat menghargai dan menikmati keindahan seni.</p>
         </div>
         <div className="flex flex-wrap -m-4">
