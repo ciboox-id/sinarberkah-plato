@@ -22,7 +22,7 @@ export default function RootLayout({ children }) {
               <Link href="/gallery" className=" hover:text-main-color">Gallery Pola</Link>
               <Link href="/article" className=" hover:text-main-color md:pl-0">Artikel</Link>
             </nav>
-            <a href="https://api.whatsapp.com/send?phone=+6285156674215&text=Halo!">
+            <a href="https://api.whatsapp.com/send?phone=+62 81274000418&text=Halo!">
               <button className="md:inline-flex items-center hidden bg-main-color text-offwhite border-0 py-2 px-4 rounded-lg shadow-md text-base mt-4 md:mt-0 mx-auto md:mx-0">
                 Hubungi Kami
               </button>
