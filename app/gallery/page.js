@@ -45,6 +45,13 @@ const Gallery = () => {
               subtitle: "THE SUBTITLE",
               description: "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
             },
+            {
+              imgUrl: "./images/12.jpg",
+              imgAlt: "gallery",
+              title: "The 400 Blows",
+              subtitle: "THE SUBTITLE",
+              description: "Photo booth fam kinfolk cold-pressed sriracha leggings jianbing microdosing tousled waistcoat.",
+            },
           ].map((item, index) => (
             <div key={index} className="lg:w-1/3 sm:w-1/2 p-4">
               <div className="flex relative">
