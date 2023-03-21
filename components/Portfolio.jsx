@@ -10,7 +10,7 @@ const Portfolio = () => {
   const [gallery, setGallery] = useState([]);
 
   useEffect(() => {
-    axios.get("/gallery/posts").then((e) => { setGallery(e.data.data) })
+    axios.get("/api/gallery/v1/portfolio").then((e) => { console.log(e) })
   }, [])
 
 

@@ -5,25 +5,25 @@ const products = [
     name: "The Catalyzer",
     image: "./images/12.jpg",
     category: "CATEGORY",
-    price: "$16.00",
+    price: "Rp. 16000",
   },
   {
     name: "Shooting Stars",
     image: "./images/15.jpg",
     category: "CATEGORY",
-    price: "$21.15",
+    price: "Rp. 21000",
   },
   {
     name: "Neptune",
     image: "./images/16.jpg",
     category: "CATEGORY",
-    price: "$12.00",
+    price: "Rp. 12000",
   },
   {
     name: "The 400 Blows",
     image: "./images/18.jpg",
     category: "CATEGORY",
-    price: "$18.40",
+    price: "Rp. 18000",
   },
 ];
 
