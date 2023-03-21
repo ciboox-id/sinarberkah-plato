@@ -10,7 +10,10 @@ const Portfolio = () => {
   const [gallery, setGallery] = useState([]);
 
   useEffect(() => {
-    axios.get("/api/gallery/v1/portfolio").then((e) => { console.log(e) })
+    axios.get("/api/gallery/v1/portfolio").then((e) => {
+      console.log(e.data.data)
+      setGallery(e.data.data)
+    })
   }, [])
 
 
@@ -24,18 +27,16 @@ const Portfolio = () => {
     cssEase: "linear",
   };
 
-  // const index = [1, 2, 3, 4, 5, 6]
-
   return (
     <section className="px-14 py-24">
       <div className="container mx-auto flex md:flex-row flex-col items-start justify-end">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 mx-auto items-center">
           <div className="pt-10">
             <Slider {...settings}>
-              {gallery.map((index) => {
+              {gallery.map((data) => {
                 return (
                   <div className="wrapper">
-                    <img src={`https://api-plato.vercel.app/${index.image}`} alt="" />
+                    {/* <img src={`https://api-sinarberkah-app.vercel.app/${data}`} alt="" /> */}
                   </div>
                 )
               })}
