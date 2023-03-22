@@ -31,12 +31,12 @@ const Portfolio = () => {
     <section className="px-14 py-24">
       <div className="container mx-auto flex md:flex-row flex-col items-start justify-end">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0 mx-auto items-center">
-          <div className="pt-10">
+          <div>
             <Slider {...settings}>
               {gallery.map((data) => {
                 return (
                   <div className="wrapper">
-                    {/* <img src={`https://api-sinarberkah-app.vercel.app/${data}`} alt="" /> */}
+                    <img src={`${data.image.image_url}`} alt="" />
                   </div>
                 )
               })}
