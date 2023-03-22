@@ -1,17 +1,16 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import axios from '@/library/axios';
+"use client";
+import React, { useState, useEffect } from "react";
+import axios from "@/library/axios";
 
 const News = () => {
-
   const [article, setArticle] = useState([]);
 
   useEffect(() => {
     axios.get("/api/article/v1").then((e) => {
-      console.log(e.data.data)
-      setArticle(e.data.data)
-    })
-  }, [])
+      console.log(e.data.data);
+      setArticle(e.data.data);
+    });
+  }, []);
 
   return (
     <section className="px-14">
@@ -23,12 +22,27 @@ const News = () => {
                 <img className="w-64" src={data.image.image_url} alt="news" />
               </div>
               <div className="md:flex-grow">
-                <h2 className="text-sm title-font font-bold text-main-color uppercase mb-2">{data.category}</h2>
-                <h2 className="text-2xl font-bold text-dark-main font-mulish mb-2">{data.title}</h2>
-                <p className="leading-relaxed text-gray font-medium">{data.content}</p>
+                <h2 className="text-sm title-font font-bold text-main-color uppercase mb-2">
+                  {data.category}
+                </h2>
+                <h2 className="text-2xl font-bold text-dark-main font-mulish mb-2">
+                  {data.title}
+                </h2>
+                <p className="leading-relaxed text-gray font-medium">
+                  {data.content}
+                </p>
                 <p className="mt-5 text-gray text-sm">{data.createdAt}</p>
-                <a className="text-indigo-500 inline-flex items-center mt-4 hover:text-main-color">Lihat Selengkapnya
-                  <svg className="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                <a className="text-indigo-500 inline-flex items-center mt-4 hover:text-main-color">
+                  Lihat Selengkapnya
+                  <svg
+                    className="w-4 h-4 ml-2"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    fill="none"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
                     <path d="M5 12h14"></path>
                     <path d="M12 5l7 7-7 7"></path>
                   </svg>

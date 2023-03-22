@@ -1,21 +1,19 @@
-"use client"
-import React, { useState, useEffect } from 'react';
+"use client";
+import React, { useState, useEffect } from "react";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import axios from '@/library/axios';
+import axios from "@/library/axios";
 
 const Portfolio = () => {
-
   const [gallery, setGallery] = useState([]);
 
   useEffect(() => {
     axios.get("/api/gallery/v1/portfolio").then((e) => {
-      console.log(e.data.data)
-      setGallery(e.data.data)
-    })
-  }, [])
-
+      console.log(e.data.data);
+      setGallery(e.data.data);
+    });
+  }, []);
 
   const settings = {
     infinite: true,
@@ -38,24 +36,33 @@ const Portfolio = () => {
                   <div className="wrapper">
                     <img src={`${data.image.image_url}`} alt="" />
                   </div>
-                )
+                );
               })}
             </Slider>
           </div>
         </div>
         <div className="lg:flex-grow md:w-1/2 lg:pl-36 md:pl-16 flex flex-col md:items-start md:text-left items-start text-center">
-          <h2 className="text-main-color mb-3 text-base font-bold uppercase mx-auto md:mx-0">Portofolio Kami</h2>
-          <h1 className="title-font sm:text-4xl text-4xl mb-6 font-bold text-dark-main font-mulish">Project Yang Pernah
+          <h2 className="text-main-color mb-3 text-base font-bold uppercase mx-auto md:mx-0">
+            Portofolio Kami
+          </h2>
+          <h1 className="title-font sm:text-4xl text-4xl mb-6 font-bold text-dark-main font-mulish">
+            Project Yang Pernah
             <br className="hidden lg:inline-block" /> Kami Kerjakan
           </h1>
-          <p className="mb-10 leading-relaxed text-gray font-medium text-lg">Sangat ideal untuk bermitra dengan kami karena sudah <br /> tidak diragukan lagi cara kami dalam menangani <br /> orderan dari anda semua</p>
+          <p className="mb-10 leading-relaxed text-gray font-medium text-lg">
+            Sangat ideal untuk bermitra dengan kami karena sudah <br /> tidak
+            diragukan lagi cara kami dalam menangani <br /> orderan dari anda
+            semua
+          </p>
           <div className="flex w-full justify-center items-center">
-            <button className="inline-flex items-center bg-main-color text-offwhite border-0 py-2 px-4 rounded-lg shadow-md mt-4 md:mt-0 md:relative md:mx-auto md:ml-0">Lihat Semua</button>
+            <button className="inline-flex items-center bg-main-color text-offwhite border-0 py-2 px-4 rounded-lg shadow-md mt-4 md:mt-0 md:relative md:mx-auto md:ml-0">
+              Lihat Semua
+            </button>
           </div>
         </div>
       </div>
     </section>
-  )
-}
+  );
+};
 
 export default Portfolio;

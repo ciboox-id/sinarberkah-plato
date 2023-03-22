@@ -1,5 +1,5 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default axios.create({
-  baseURL: 'https://api-sinarberkah-app.vercel.app/',
+  baseURL: "https://api-sinarberkah-app.vercel.app/",
 });

@@ -1,24 +1,31 @@
-import React from 'react';
-import { MdOutlineCarpenter, MdOutlineFoundation, MdOutlineLayers } from 'react-icons/md';
+import React from "react";
+import {
+  MdOutlineCarpenter,
+  MdOutlineFoundation,
+  MdOutlineLayers,
+} from "react-icons/md";
 
 const servicesData = [
   {
     id: 1,
-    icon: <MdOutlineCarpenter size='2.8rem' />,
-    title: 'Jasa Cutting',
-    description: 'Seperti plat, akrilik, PVC, MDF metahan tanpa proses finishing',
+    icon: <MdOutlineCarpenter size="2.8rem" />,
+    title: "Jasa Cutting",
+    description:
+      "Seperti plat, akrilik, PVC, MDF metahan tanpa proses finishing",
   },
   {
     id: 2,
-    icon: <MdOutlineFoundation size='2.8rem' />,
-    title: 'Las & Konstruksi',
-    description: 'Pembuatan interior/exterior pintu pagar, railing tangga, kanopi, plafon dll.',
+    icon: <MdOutlineFoundation size="2.8rem" />,
+    title: "Las & Konstruksi",
+    description:
+      "Pembuatan interior/exterior pintu pagar, railing tangga, kanopi, plafon dll.",
   },
   {
     id: 3,
-    icon: <MdOutlineLayers size='2.8rem' />,
-    title: 'Sketsel & Plat Instan',
-    description: 'Pembuatan sketsel siap pakai ataupun instan dengan finishing terbaik',
+    icon: <MdOutlineLayers size="2.8rem" />,
+    title: "Sketsel & Plat Instan",
+    description:
+      "Pembuatan sketsel siap pakai ataupun instan dengan finishing terbaik",
   },
 ];
 
@@ -43,8 +50,12 @@ const Services = () => {
               <div className="inline-flex items-center justify-center rounded-none mb-2">
                 {icon}
               </div>
-              <h2 className="text-xl sm:text-xl text-dark-main font-bold title-font mb-1">{title}</h2>
-              <p className="leading-relaxed text-sm text-gray font-medium">{description}</p>
+              <h2 className="text-xl sm:text-xl text-dark-main font-bold title-font mb-1">
+                {title}
+              </h2>
+              <p className="leading-relaxed text-sm text-gray font-medium">
+                {description}
+              </p>
             </div>
           ))}
         </div>

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Contact from "@/components/Contact";
 import Delivery from "@/components/Delivery";
 import Hero from "@/components/Hero";
@@ -7,7 +7,6 @@ import Portfolio from "@/components/Portfolio";
 import Product from "@/components/Product";
 import Promo from "@/components/Promo";
 import Services from "@/components/Services";
-
 
 export default function Home() {
   return (
@@ -21,5 +20,5 @@ export default function Home() {
       <Material />
       <Contact />
     </main>
-  )
+  );
 }
