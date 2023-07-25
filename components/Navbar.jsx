@@ -15,16 +15,16 @@ const Navbar = () => {
           <Link href="/" className=" hover:text-main-color md:pl-0">
             Beranda
           </Link>
-          <Link href="/cart" className=" hover:text-main-color md:pl-0">
+          <Link href="/Cart" className=" hover:text-main-color md:pl-0">
             Produk
           </Link>
-          <Link href="/portfolio" className=" hover:text-main-color">
+          <Link href="/Portfolio" className=" hover:text-main-color">
             Portfolio
           </Link>
-          <Link href="/gallery" className=" hover:text-main-color">
+          <Link href="/Gallery" className=" hover:text-main-color">
             Gallery Pola
           </Link>
-          <Link href="/article" className=" hover:text-main-color md:pl-0">
+          <Link href="/Article" className=" hover:text-main-color md:pl-0">
             Artikel
           </Link>
         </nav>
