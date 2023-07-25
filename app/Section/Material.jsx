@@ -29,7 +29,7 @@ const Material = () => {
     <section className="px-14">
       <div className="container mx-auto flex py-12 md:flex-row flex-col items-center justify-center">
         <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-          <div className="flex flex-row flex-wrap gap-8  items-center justify-center">
+          <div className="flex flex-row flex-wrap gap-8 items-center justify-center">
             {materials.map((material, index) => (
               <div
                 key={index}

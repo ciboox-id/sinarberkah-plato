@@ -28,9 +28,7 @@ const News = () => {
                 <h2 className="text-2xl font-bold text-dark-main font-mulish mb-2">
                   {data.title}
                 </h2>
-                <p className="leading-relaxed text-gray font-medium">
-                  {data.content}
-                </p>
+                {data.content}
                 <p className="mt-5 text-gray text-sm">{data.createdAt}</p>
                 <a className="text-indigo-500 inline-flex items-center mt-4 hover:text-main-color">
                   Lihat Selengkapnya

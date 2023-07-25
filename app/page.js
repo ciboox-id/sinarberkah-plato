@@ -1,12 +1,12 @@
 "use client";
-import Contact from "@/components/Contact";
-import Delivery from "@/components/Delivery";
-import Hero from "@/components/Hero";
-import Material from "@/components/Material";
-import Portfolio from "@/components/Portfolio";
-import Product from "@/components/Product";
-import Promo from "@/components/Promo";
-import Services from "@/components/Services";
+import Contact from "./Section/Contact";
+import Delivery from "./Section/Delivery";
+import Hero from "./Section/Hero";
+import Material from "./Section/Material";
+import Portfolio from "./Section/Portfolio";
+import Product from "./Section/Product";
+import Promo from "./Section/Promo";
+import Services from "./Section/Services";
 
 export default function Home() {
   return (
