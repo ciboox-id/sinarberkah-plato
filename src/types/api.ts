@@ -35,6 +35,20 @@ export const productSchema = z.object({
   isActive: z.boolean(),
 });
 
+/**
+ * Bentuk respons daftar dari backend:
+ * `{ success: true, data: { items: [...], pagination: { total, page, limit, totalPages } } }`.
+ * Item belum diperiksa di sini; tiap item divalidasi sendiri supaya satu item rusak
+ * tidak membuang seluruh daftar.
+ */
+export const listResponseSchema = z.object({
+  success: z.literal(true),
+  data: z.object({
+    items: z.array(z.unknown()),
+    pagination: z.object({ totalPages: z.number().int().nonnegative() }),
+  }),
+});
+
 export type ApiImage = z.infer<typeof apiImageSchema>;
 export type GalleryItem = z.infer<typeof galleryItemSchema>;
 export type PortfolioItem = GalleryItem;

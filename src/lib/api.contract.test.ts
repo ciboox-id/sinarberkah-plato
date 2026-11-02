@@ -27,8 +27,11 @@ describe.skipIf(!baseUrl)("kontrak API backend", () => {
     expect(response.status).toBe(200);
 
     const envelope = z.object({
-      data: z.array(schema),
-      meta: z.object({ totalPages: z.number().int().nonnegative() }),
+      success: z.literal(true),
+      data: z.object({
+        items: z.array(schema),
+        pagination: z.object({ totalPages: z.number().int().nonnegative() }),
+      }),
     });
     const result = envelope.safeParse(await response.json());
     expect(result.success, result.error?.message).toBe(true);

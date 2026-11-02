@@ -31,6 +31,34 @@ afterEach(() => {
   fetchMock.mockReset();
 });
 
+describe("fetchList: bentuk ApiResponse baru", () => {
+  const page = (ids: string[], totalPages: number) =>
+    json({
+      success: true,
+      data: {
+        items: ids.map(pattern),
+        pagination: { total: 3, page: 1, limit: 100, totalPages },
+      },
+    });
+
+  it("membaca data.items dan mengikuti pagination.totalPages", async () => {
+    fetchMock
+      .mockResolvedValueOnce(page(["1", "2"], 2))
+      .mockResolvedValueOnce(page(["3"], 2));
+    const items = await getGallery();
+    expect(items.map((item) => item._id)).toEqual(["1", "2", "3"]);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+  });
+
+  it("{ success: false } dengan 404 dianggap gagal permanen (tanpa ulang)", async () => {
+    fetchMock.mockResolvedValue(
+      json({ success: false, error: "Tidak ada" }, 404),
+    );
+    await expect(getGallery()).rejects.toBeInstanceOf(ApiError);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe("fetchList (lewat getGallery)", () => {
   it("mengambil semua halaman sampai meta.totalPages", async () => {
     fetchMock

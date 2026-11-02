@@ -5,6 +5,7 @@ import { z } from "zod";
 import {
   articleSchema,
   galleryItemSchema,
+  listResponseSchema,
   productSchema,
   type Article,
   type GalleryItem,
@@ -69,10 +70,35 @@ export class ApiError extends Error {
 /** Kesalahan yang tidak berguna jika diulang (mis. 404 atau 400). */
 class PermanentError extends ApiError {}
 
-const envelopeSchema = z.object({
+/**
+ * Bentuk lama (`{ data: [...], meta }`) sebelum backend pindah ke ApiResponse.
+ * Masih diterima supaya situs tidak rusak di antara deploy backend dan frontend.
+ * Hapus setelah backend baru live di produksi.
+ */
+const legacyEnvelopeSchema = z.object({
   data: z.array(z.unknown()),
   meta: z.object({ totalPages: z.number().int().nonnegative() }).optional(),
 });
+
+function readEnvelope(
+  body: unknown,
+): { items: unknown[]; totalPages: number } | null {
+  const current = listResponseSchema.safeParse(body);
+  if (current.success) {
+    return {
+      items: current.data.data.items,
+      totalPages: current.data.data.pagination.totalPages,
+    };
+  }
+  const legacy = legacyEnvelopeSchema.safeParse(body);
+  if (legacy.success) {
+    return {
+      items: legacy.data.data,
+      totalPages: legacy.data.meta?.totalPages ?? 1,
+    };
+  }
+  return null;
+}
 
 const wait = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
@@ -121,12 +147,12 @@ async function fetchList<T>(
 
   for (let page = 1; page <= MAX_PAGES; page++) {
     const pagePath = `${path}?limit=${LIST_LIMIT}&page=${page}`;
-    const envelope = envelopeSchema.safeParse(await requestJson(pagePath, tag));
-    if (!envelope.success) {
+    const envelope = readEnvelope(await requestJson(pagePath, tag));
+    if (!envelope) {
       throw new ApiError(`Bentuk respons ${pagePath} tidak dikenali.`);
     }
 
-    for (const raw of envelope.data.data) {
+    for (const raw of envelope.items) {
       const parsed = schema.safeParse(raw);
       if (parsed.success) {
         items.push(parsed.data);
@@ -135,8 +161,7 @@ async function fetchList<T>(
       }
     }
 
-    const totalPages = envelope.data.meta?.totalPages ?? 1;
-    if (page >= totalPages) return items;
+    if (page >= envelope.totalPages) return items;
   }
 
   console.error(
