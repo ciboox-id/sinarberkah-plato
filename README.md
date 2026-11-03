@@ -42,7 +42,7 @@ Photos uploaded through the admin panel live in Vercel Blob. Next.js optimizes t
 
 ## Getting started
 
-You need Node.js 20.9 or newer.
+You need Node.js 24.
 
 ```bash
 npm install
