@@ -6,7 +6,7 @@ import { siteConfig } from "@/data/site";
 const watchVideoStyles =
   "group inline-flex items-center gap-4 font-heading text-base font-semibold text-brand-strong lowercase";
 const playIconStyles =
-  "inline-flex h-[43px] w-[42px] items-center justify-center bg-brand-strong text-white transition-colors duration-200 motion-reduce:transition-none";
+  "inline-flex h-[43px] w-[42px] items-center justify-center bg-brand text-white transition-colors duration-200 motion-reduce:transition-none";
 
 /** Tata letak desktop mengikuti frame Figma: area 808px, foto 372px + teks 372px. */
 export function About() {
@@ -60,7 +60,7 @@ export function About() {
                 className={watchVideoStyles}
               >
                 <span
-                  className={`${playIconStyles} group-hover:bg-brand-strong-hover`}
+                  className={`${playIconStyles} group-hover:bg-brand-hover`}
                 >
                   <MdPlayArrow size={28} aria-hidden="true" />
                 </span>
