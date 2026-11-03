@@ -1,7 +1,6 @@
 import { FaWhatsapp } from "react-icons/fa6";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 
-import { MapEmbed } from "@/components/sections/map-embed";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { siteConfig } from "@/data/site";
 import { whatsappLink } from "@/lib/whatsapp";
@@ -18,10 +17,13 @@ export function Contact() {
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-          <MapEmbed
+          <iframe
             title="Lokasi Bengkel Sinar Berkah di Google Maps"
             src={siteConfig.mapEmbedUrl}
-            className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px]"
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            className="aspect-[4/3] w-full border-0 bg-line sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px]"
           />
 
           <div className="flex flex-col gap-8 bg-white p-6 shadow-card sm:p-8">
