@@ -46,7 +46,7 @@ export function BannerSection({
         <p
           className={cn(
             "text-sm font-bold tracking-wider uppercase",
-            isDark ? "text-surface" : "text-brand",
+            isDark ? "text-surface" : "text-brand-strong",
           )}
         >
           {eyebrow}

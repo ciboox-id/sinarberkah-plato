@@ -31,6 +31,16 @@ export const siteConfig = {
     email: undefined as string | undefined,
   },
 
+  /** Rincian alamat dan koordinat untuk data terstruktur. Koordinat diambil dari `mapEmbedUrl`. */
+  location: {
+    streetAddress: "Jl. Kolonel Sugiono No. 248, Gadang, Kec. Sukun",
+    locality: "Malang",
+    region: "Jawa Timur",
+    postalCode: "65149",
+    latitude: -8.01621454302296,
+    longitude: 112.62621790243087,
+  },
+
   mapEmbedUrl:
     "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5292.802055350692!2d112.62621790243087!3d-8.01621454302296!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd627f10eef89ef%3A0xf6f5bedc8ad588a3!2sBengkel%20Sinar%20Berkah!5e0!3m2!1sen!2sid!4v1676877622831!5m2!1sen!2sid",
 

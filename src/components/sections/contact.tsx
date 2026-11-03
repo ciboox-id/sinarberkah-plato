@@ -1,6 +1,7 @@
 import { FaWhatsapp } from "react-icons/fa6";
 import { MdEmail, MdLocationOn, MdPhone } from "react-icons/md";
 
+import { MapEmbed } from "@/components/sections/map-embed";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { siteConfig } from "@/data/site";
 import { whatsappLink } from "@/lib/whatsapp";
@@ -17,18 +18,15 @@ export function Contact() {
         />
 
         <div className="mt-10 grid gap-8 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
-          <iframe
+          <MapEmbed
             title="Lokasi Bengkel Sinar Berkah di Google Maps"
             src={siteConfig.mapEmbedUrl}
-            loading="lazy"
-            allowFullScreen
-            referrerPolicy="no-referrer-when-downgrade"
-            className="aspect-[4/3] w-full border-0 bg-line sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px]"
+            className="aspect-[4/3] w-full sm:aspect-[16/10] lg:aspect-auto lg:min-h-[420px]"
           />
 
           <div className="flex flex-col gap-8 bg-white p-6 shadow-card sm:p-8">
             <div>
-              <h3 className="font-heading text-base font-bold tracking-wide text-brand uppercase">
+              <h3 className="font-heading text-base font-bold tracking-wide text-brand-strong uppercase">
                 Contact Us
               </h3>
               <ul className="mt-4 space-y-4 text-sm">
@@ -43,7 +41,7 @@ export function Contact() {
                 <li>
                   <a
                     href={contact.phoneHref}
-                    className="flex min-h-11 items-center gap-3 hover:text-brand"
+                    className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
                   >
                     <MdPhone
                       size={20}
@@ -57,7 +55,7 @@ export function Contact() {
                   <li>
                     <a
                       href={`mailto:${contact.email}`}
-                      className="flex min-h-11 items-center gap-3 hover:text-brand"
+                      className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
                     >
                       <MdEmail
                         size={20}
@@ -72,7 +70,7 @@ export function Contact() {
             </div>
 
             <div>
-              <h3 className="font-heading text-base font-bold tracking-wide text-brand uppercase">
+              <h3 className="font-heading text-base font-bold tracking-wide text-brand-strong uppercase">
                 Sosial Media
               </h3>
               <ul className="mt-2 text-sm">
@@ -81,7 +79,7 @@ export function Contact() {
                     href={whatsappLink(contact.whatsappGeneral)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex min-h-11 items-center gap-3 hover:text-brand"
+                    className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
                   >
                     <FaWhatsapp
                       size={20}
@@ -97,7 +95,7 @@ export function Contact() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex min-h-11 items-center gap-3 hover:text-brand"
+                      className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
                     >
                       {link.label}
                     </a>

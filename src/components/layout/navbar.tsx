@@ -137,7 +137,7 @@ function NavItem({
       aria-current={active ? "page" : undefined}
       className={cn(
         "text-base font-medium transition-colors duration-200 motion-reduce:transition-none",
-        active ? "text-brand" : "text-muted hover:text-brand",
+        active ? "text-brand-strong" : "text-muted hover:text-brand-strong",
         className,
       )}
     >

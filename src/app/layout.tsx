@@ -27,14 +27,18 @@ export const metadata: Metadata = {
   },
   description: siteConfig.description,
   applicationName: siteConfig.name,
+  // "./" menjadi alamat halaman yang sedang dibuka (relatif terhadap metadataBase).
+  alternates: { canonical: "./" },
   openGraph: {
     type: "website",
     locale: siteConfig.locale,
     siteName: siteConfig.name,
+    url: "./",
     title: `${siteConfig.name} | ${siteConfig.tagline}`,
     description: siteConfig.description,
     images: [{ url: "/images/hero-1.png", width: 1148, height: 770 }],
   },
+  twitter: { card: "summary_large_image" },
 };
 
 export const viewport: Viewport = {

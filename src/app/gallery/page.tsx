@@ -3,14 +3,22 @@ import type { Metadata } from "next";
 import { ContentImage } from "@/components/ui/content-image";
 import { EmptyState, PageHeader } from "@/components/ui/page-header";
 import { getGallery } from "@/lib/api";
+import { pageMetadata } from "@/lib/metadata";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Galeri Pola",
   description:
     "Koleksi pola ornamen Sinar Berkah. Tersedia pola jadi maupun pola custom sesuai kebutuhan Anda.",
-};
+  path: "/gallery",
+  image: {
+    url: "/images/pattern-gallery.png",
+    width: 1116,
+    height: 446,
+    alt: "Lima contoh pola ornamen Sinar Berkah",
+  },
+});
 
 export default async function GalleryPage() {
   const items = await getGallery();
@@ -38,7 +46,7 @@ export default async function GalleryPage() {
                     />
                   </div>
                   <figcaption className="mt-3">
-                    <p className="text-xs font-bold tracking-wider text-brand uppercase">
+                    <p className="text-xs font-bold tracking-wider text-brand-strong uppercase">
                       {item.type}
                     </p>
                     <h2 className="font-heading text-lg font-bold">

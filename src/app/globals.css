@@ -3,13 +3,17 @@
 /*
  * Design tokens, diambil dari Figma "PLATO Landing Page" (Version 2).
  *
- * - `brand` (#FF7062) adalah "main-orange" dari Figma, dipakai persis untuk tombol dan label.
- *   Catatan: kontras #FF7062 terhadap putih hanya 2.8:1 (di bawah WCAG AA 4.5:1).
+ * - `brand` (#FF7062) adalah "main-orange" dari Figma. Dipakai untuk bidang dekoratif (titik carousel).
+ *   Kontras #FF7062 terhadap putih hanya 2.7:1 (di bawah WCAG AA 4.5:1), jadi tidak dipakai untuk teks.
+ * - `brand-strong` (#CC3A2A, kontras 5.0:1 terhadap putih) dipakai untuk teks berwarna brand,
+ *   tombol utama, dan cincin fokus. Untuk kembali ke warna Figma, ubah nilainya ke #ff7062.
  * - `muted` sedikit lebih gelap dari abu-abu Figma (#777) yang kontrasnya 4.48:1.
  */
 @theme {
   --color-brand: #ff7062;
   --color-brand-hover: #e85a4c;
+  --color-brand-strong: #cc3a2a;
+  --color-brand-strong-hover: #b03022;
   --color-accent: #55acee;
   --color-ink: #222222;
   --color-muted: #6b6b6b;
@@ -60,7 +64,7 @@
   }
 
   :focus-visible {
-    outline: 2px solid var(--focus-color, var(--color-brand));
+    outline: 2px solid var(--focus-color, var(--color-brand-strong));
     outline-offset: 2px;
   }
 

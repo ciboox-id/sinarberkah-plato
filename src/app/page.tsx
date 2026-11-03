@@ -14,9 +14,11 @@ import {
   PortfolioPreviewSkeleton,
 } from "@/components/sections/portfolio-preview";
 import { Services } from "@/components/sections/services";
+import { JsonLd } from "@/components/ui/json-ld";
 import { heroSlides } from "@/data/content";
 import { siteConfig } from "@/data/site";
 import { getPortfolio } from "@/lib/api";
+import { absoluteUrl } from "@/lib/metadata";
 import { whatsappLink } from "@/lib/whatsapp";
 
 export const revalidate = 3600;
@@ -39,21 +41,25 @@ export default function HomePage() {
     description: siteConfig.description,
     url: siteConfig.url,
     telephone: siteConfig.contact.phoneDisplay,
+    image: absoluteUrl("/images/hero-1.png"),
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: siteConfig.location.latitude,
+      longitude: siteConfig.location.longitude,
+    },
     address: {
       "@type": "PostalAddress",
-      streetAddress: siteConfig.contact.address,
+      streetAddress: siteConfig.location.streetAddress,
+      addressLocality: siteConfig.location.locality,
+      addressRegion: siteConfig.location.region,
+      postalCode: siteConfig.location.postalCode,
       addressCountry: "ID",
     },
   };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
-        }}
-      />
+      <JsonLd data={jsonLd} />
       <Hero slides={heroSlides} />
       <About />
       <Services />

@@ -3,14 +3,16 @@ import type { Metadata } from "next";
 import { EmptyState, PageHeader } from "@/components/ui/page-header";
 import { ContentImage } from "@/components/ui/content-image";
 import { getPortfolio } from "@/lib/api";
+import { pageMetadata } from "@/lib/metadata";
 
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = pageMetadata({
   title: "Portofolio",
   description:
     "Proyek ornamen, railing, pagar dan sketsel yang pernah dikerjakan Sinar Berkah.",
-};
+  path: "/portfolio",
+});
 
 export default async function PortfolioPage() {
   const items = await getPortfolio();
@@ -36,7 +38,7 @@ export default async function PortfolioPage() {
                     className="object-cover"
                   />
                 </div>
-                <p className="mt-4 text-xs font-bold tracking-wider text-brand uppercase">
+                <p className="mt-4 text-xs font-bold tracking-wider text-brand-strong uppercase">
                   {item.type}
                 </p>
                 <h2 className="mt-1 font-heading text-lg font-bold">
