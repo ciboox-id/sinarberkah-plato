@@ -27,7 +27,7 @@ export function Materials() {
         </ul>
 
         <div>
-          <p className="text-sm font-bold tracking-wider text-brand-strong uppercase">
+          <p className="text-sm font-bold tracking-wider text-brand uppercase">
             Bahan Bahan
           </p>
           <h2 className="mt-2 font-heading text-2xl leading-tight font-bold text-balance">

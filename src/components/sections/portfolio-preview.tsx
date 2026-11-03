@@ -7,7 +7,7 @@ export function PortfolioPreview({ items }: { items: PortfolioItem[] }) {
     <section id="portfolio" className="py-16 lg:py-24">
       <div className="mx-auto grid max-w-[1280px] items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,420px)] lg:gap-12">
         <div className="container-page lg:order-last lg:px-0 lg:pr-14">
-          <p className="text-sm font-bold tracking-wider text-brand-strong uppercase">
+          <p className="text-sm font-bold tracking-wider text-brand uppercase">
             Portofolio kami
           </p>
           <h2 className="mt-2 font-heading text-2xl leading-tight font-bold text-balance">

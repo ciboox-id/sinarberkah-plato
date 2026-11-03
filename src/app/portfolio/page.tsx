@@ -38,7 +38,7 @@ export default async function PortfolioPage() {
                     className="object-cover"
                   />
                 </div>
-                <p className="mt-4 text-xs font-bold tracking-wider text-brand-strong uppercase">
+                <p className="mt-4 text-xs font-bold tracking-wider text-brand uppercase">
                   {item.type}
                 </p>
                 <h2 className="mt-1 font-heading text-lg font-bold">

@@ -4,7 +4,7 @@ import { ContentImage } from "@/components/ui/content-image";
 import { siteConfig } from "@/data/site";
 
 const watchVideoStyles =
-  "group inline-flex items-center gap-4 font-heading text-base font-semibold text-brand-strong lowercase";
+  "group inline-flex items-center gap-4 font-heading text-base font-semibold text-brand lowercase";
 const playIconStyles =
   "inline-flex h-[43px] w-[42px] items-center justify-center bg-brand text-white transition-colors duration-200 motion-reduce:transition-none";
 
@@ -36,7 +36,7 @@ export function About() {
         </div>
 
         <div className="lg:pt-[86px]">
-          <p className="text-sm leading-[19px] font-bold tracking-normal text-brand-strong uppercase">
+          <p className="text-sm leading-[19px] font-bold tracking-normal text-brand uppercase">
             Tentang Kami
           </p>
           <h2 className="mt-3.5 font-heading text-2xl leading-[30px] font-bold text-ink">

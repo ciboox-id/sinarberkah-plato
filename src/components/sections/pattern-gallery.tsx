@@ -6,7 +6,7 @@ import { buildPatternSlides } from "@/lib/patterns";
 function PatternHeader() {
   return (
     <>
-      <p className="text-sm font-bold text-brand-strong">Galeri Pola</p>
+      <p className="text-sm font-bold text-brand">Galeri Pola</p>
       <h2 className="mt-2 font-heading text-2xl leading-tight font-bold text-balance">
         Pola Pola Yang Kami Miliki
       </h2>

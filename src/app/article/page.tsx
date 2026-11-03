@@ -39,7 +39,7 @@ export default async function ArticlePage() {
                   />
                 </div>
                 <article className="flex-1">
-                  <p className="text-sm font-bold tracking-wider text-brand-strong uppercase">
+                  <p className="text-sm font-bold tracking-wider text-brand uppercase">
                     {article.category}
                   </p>
                   <h2 className="mt-1 font-heading text-2xl font-bold">

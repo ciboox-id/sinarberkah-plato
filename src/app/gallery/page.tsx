@@ -46,7 +46,7 @@ export default async function GalleryPage() {
                     />
                   </div>
                   <figcaption className="mt-3">
-                    <p className="text-xs font-bold tracking-wider text-brand-strong uppercase">
+                    <p className="text-xs font-bold tracking-wider text-brand uppercase">
                       {item.type}
                     </p>
                     <h2 className="font-heading text-lg font-bold">

@@ -88,7 +88,7 @@ export function ProductGrid({ products }: { products: Product[] }) {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-3 inline-flex min-h-11 items-center self-start text-sm font-semibold text-brand-strong hover:text-brand-strong-hover"
+                className="mt-3 inline-flex min-h-11 items-center self-start text-sm font-semibold text-brand hover:text-brand-hover"
               >
                 Tanya via WhatsApp
               </a>

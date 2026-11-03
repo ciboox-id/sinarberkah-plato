@@ -27,7 +27,7 @@ export function Footer() {
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className="inline-flex min-h-10 items-center text-muted transition-colors duration-200 hover:text-brand-strong motion-reduce:transition-none"
+                  className="inline-flex min-h-10 items-center text-muted transition-colors duration-200 hover:text-brand motion-reduce:transition-none"
                 >
                   {link.label}
                 </Link>
@@ -48,7 +48,7 @@ export function Footer() {
             href={whatsappLink(siteConfig.contact.whatsappOrder)}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-ink transition-colors duration-200 hover:text-brand-strong motion-reduce:transition-none"
+            className="mt-3 inline-flex min-h-11 items-center gap-2 font-semibold text-ink transition-colors duration-200 hover:text-brand motion-reduce:transition-none"
           >
             <FaWhatsapp size={20} aria-hidden="true" />
             Chat via WhatsApp

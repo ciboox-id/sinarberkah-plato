@@ -26,7 +26,7 @@ export function Contact() {
 
           <div className="flex flex-col gap-8 bg-white p-6 shadow-card sm:p-8">
             <div>
-              <h3 className="font-heading text-base font-bold tracking-wide text-brand-strong uppercase">
+              <h3 className="font-heading text-base font-bold tracking-wide text-brand uppercase">
                 Contact Us
               </h3>
               <ul className="mt-4 space-y-4 text-sm">
@@ -41,7 +41,7 @@ export function Contact() {
                 <li>
                   <a
                     href={contact.phoneHref}
-                    className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
+                    className="flex min-h-11 items-center gap-3 hover:text-brand"
                   >
                     <MdPhone
                       size={20}
@@ -55,7 +55,7 @@ export function Contact() {
                   <li>
                     <a
                       href={`mailto:${contact.email}`}
-                      className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
+                      className="flex min-h-11 items-center gap-3 hover:text-brand"
                     >
                       <MdEmail
                         size={20}
@@ -70,7 +70,7 @@ export function Contact() {
             </div>
 
             <div>
-              <h3 className="font-heading text-base font-bold tracking-wide text-brand-strong uppercase">
+              <h3 className="font-heading text-base font-bold tracking-wide text-brand uppercase">
                 Sosial Media
               </h3>
               <ul className="mt-2 text-sm">
@@ -79,7 +79,7 @@ export function Contact() {
                     href={whatsappLink(contact.whatsappGeneral)}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
+                    className="flex min-h-11 items-center gap-3 hover:text-brand"
                   >
                     <FaWhatsapp
                       size={20}
@@ -95,7 +95,7 @@ export function Contact() {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex min-h-11 items-center gap-3 hover:text-brand-strong"
+                      className="flex min-h-11 items-center gap-3 hover:text-brand"
                     >
                       {link.label}
                     </a>
