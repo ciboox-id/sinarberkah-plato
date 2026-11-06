@@ -1,149 +1,156 @@
-# Sinar Berkah website
+# Sinar Berkah Website
 
-The public website for Sinar Berkah, a metal fabrication workshop in Malang, East Java. The workshop cuts steel plate, acrylic, PVC, and MDF, makes decorative ornament panels, and builds gates, stair railings, canopies, and screens. It has worked in industry, fabrication, and construction for more than five years and ships orders across Indonesia.
+The official public website for **Sinar Berkah**, an industrial metal fabrication and laser cutting workshop in Malang, East Java, Indonesia. The workshop specializes in precision steel plate cutting, acrylic, PVC, and MDF fabrication, decorative architectural ornament panels, custom entrance gates, stair railings, canopies, and partitions.
 
-Visitors browse the services, products, past projects, and patterns, then place an order on WhatsApp. The site has no checkout.
+Visitors can explore available services, materials, product catalogs, past project showcases, and pattern collections, then initiate custom inquiries directly through WhatsApp.
 
-The products, projects, and patterns come from a separate project, `sinarberkah-backend`. The workshop owner adds products, portfolio projects, and patterns there, and this site displays them.
+Content for products, portfolio items, and ornamental patterns is managed through a companion backend service (`sinarberkah-backend`).
 
-## Pages
+---
 
-| Path         | What it shows                                                                                                                                                                   |
-| ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `/`          | Home page: hero slider, about, services, delivery banner, portfolio, pattern gallery, promo, materials, contact and map                                                         |
-| `/products`  | Product list with search and a WhatsApp link on each product                                                                                                                    |
-| `/portfolio` | Projects the workshop has built                                                                                                                                                 |
-| `/gallery`   | Pattern gallery                                                                                                                                                                 |
-| `/article`   | Articles. The backend has no article feature yet, so this page shows an empty message. It is left out of the menu and the sitemap, and search engines are asked not to index it |
+## Tech Stack
 
-Old addresses `/cart` and `/produk` redirect to `/products`.
+- **Framework**: Next.js 16 (App Router) with Turbopack
+- **Runtime & Package Manager**: Bun 1.4+
+- **UI Library**: React 19
+- **Styling**: Tailwind CSS 4 (via `@tailwindcss/postcss`)
+- **Typography**: `next/font/google` (Mulish for headings, Open Sans for body)
+- **Language**: TypeScript 5.9 (Strict mode)
+- **Testing**: Vitest 5
+- **Icons**: React Icons (Material Design & FontAwesome)
+- **Data Validation**: Zod 4
 
-## Where the data comes from
+---
 
-| Content                                 | Source                |
-| --------------------------------------- | --------------------- |
-| Products, portfolio projects, patterns  | Backend API           |
-| Hero slides, services, materials        | `src/data/content.ts` |
-| Phone numbers, address, map, navigation | `src/data/site.ts`    |
+## Getting Started
 
-The site reads the API on the server, waits at most 6 seconds, retries once, and checks the shape of every answer. Lists are fetched page by page (100 items per page, up to 10 pages), so nothing is cut off. It caches each answer for one hour. When the backend has `FRONTEND_URL` and `REVALIDATE_SECRET` set, saving in the admin panel clears the cache at once, so changes show up right away. If the API is down while a page rebuilds, the site keeps the last good page. It never swaps in sample content. A section with no data shows an empty message.
+### Prerequisites
 
-The pages are built ahead of time, so `npm run build` needs the backend to be reachable. If it is not, the build stops with `Gagal memuat /api/...` and Vercel keeps the previous deployment live. Deploy the backend first.
+You need [Bun](https://bun.sh) (version 1.0 or newer).
 
-Photos uploaded through the admin panel live in Vercel Blob. Next.js optimizes them for you, so a phone downloads a smaller file than a desktop.
-
-## Tech stack
-
-- Next.js 16 (App Router) and React 19
-- TypeScript 5.9 in strict mode
-- Tailwind CSS 4
-- `next/font` for Mulish and Open Sans
-- `react-icons` for icons
-
-## Getting started
-
-You need Node.js 24.
+### 1. Install Dependencies
 
 ```bash
-npm install
+bun install
 ```
 
-Create `.env.local` from the example:
+### 2. Configure Environment
+
+Create `.env.local` from the provided template:
 
 ```bash
-copy .env.example .env.local      # Windows
-# cp .env.example .env.local      # macOS / Linux
+copy .env.example .env.local    # Windows
+# cp .env.example .env.local    # macOS / Linux
 ```
 
-Then start the dev server:
+### 3. Run Development Server
 
 ```bash
-npm run dev
+bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-### Environment variables
+---
 
-| Variable               | Purpose                                                                                                                                                                      |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `API_BASE_URL`         | Backend address without a trailing slash. In development it defaults to `http://localhost:4000`. In production it is required: the build stops with an error if it is empty. |
-| `REVALIDATE_SECRET`    | Secret for `POST /api/revalidate`, the same value as in the backend. Leave empty to turn the endpoint off.                                                                   |
-| `NEXT_PUBLIC_SITE_URL` | Public address of this site. Used for the sitemap, `robots.txt`, and page metadata                                                                                           |
+## Available Commands
 
-Restart `npm run dev` after you change `.env.local`.
+| Command | Action |
+| --- | --- |
+| `bun dev` | Starts the local development server |
+| `bun run build` | Builds the production bundle using Turbopack |
+| `bun run start` | Runs the compiled production server |
+| `bun run lint` | Checks code formatting and syntax using ESLint 9 |
+| `bun run typecheck` | Validates TypeScript types with `tsc --noEmit` |
+| `bun test` | Executes unit and API validation tests with Vitest |
+| `bun run format` | Formats files with Prettier |
+| `bun run format:check` | Verifies code adherence to Prettier guidelines |
 
-### Commands
+### API Contract Testing
 
-| Command             | What it does                   |
-| ------------------- | ------------------------------ |
-| `npm run dev`       | Starts the development server  |
-| `npm run build`     | Builds for production          |
-| `npm run start`     | Runs the production build      |
-| `npm run lint`      | Checks the code with ESLint    |
-| `npm run typecheck` | Checks TypeScript types        |
-| `npm test`          | Runs the tests (Vitest)        |
-| `npm run format`    | Formats the code with Prettier |
+Frontend API types in `src/types/api.ts` are verified against the backend schema using contract tests. To run them against a local backend instance:
 
-The API types in `src/types/api.ts` are written separately from the backend's. A contract test checks that the real backend still matches them. It runs only when `CONTRACT_API_URL` is set, and it needs at least one item of each kind in the backend:
+```bash
+# Windows PowerShell
+$env:CONTRACT_API_URL="http://localhost:4000"; bun test
 
-```powershell
-$env:CONTRACT_API_URL="http://localhost:4000"; npm test
+# Linux / macOS
+CONTRACT_API_URL="http://localhost:4000" bun test
 ```
 
-## Design
+---
 
-The layout follows the Figma file "PLATO Landing Page" (Version 2). The colors are the Figma values:
+## Environment Variables
 
-| Name                     | Value     |
-| ------------------------ | --------- |
-| Orange (buttons, labels) | `#FF7062` |
-| Dark text                | `#222222` |
-| Page background          | `#F7F7F7` |
+| Variable | Description | Requirement |
+| --- | --- | --- |
+| `API_BASE_URL` | Base URL of the backend API without a trailing slash (e.g. `http://localhost:4000` or production URL) | Required in production |
+| `REVALIDATE_SECRET` | Secret key matching the backend for on-demand revalidation at `POST /api/revalidate` | Optional (Required for instant cache purge) |
+| `NEXT_PUBLIC_SITE_URL` | Public site domain used for canonical alternates, `sitemap.xml`, and `robots.txt` | Recommended |
 
-Headings use Mulish and body text uses Open Sans. The design tokens sit at the top of `src/app/globals.css`.
+---
 
-The site works from phone width (375 px) to wide desktop screens. A few details:
+## Site Pages & Routes
 
-- The hero is a slider with previous and next buttons. It moves only when the visitor clicks.
-- The pattern gallery and the portfolio row scroll by themselves on a desktop with a mouse, and pause while the pointer is over them. On phones and tablets visitors swipe, and dots show the position.
-- Nothing moves on its own when the visitor's system asks for reduced motion.
-- The navigation collapses into a menu button below 1024 px.
-- The page has a skip link, visible focus rings, and descriptive labels on icon buttons.
+| Path | Description |
+| --- | --- |
+| `/` | Landing page: hero slider, about, services, delivery guarantees, portfolio carousel, pattern gallery, materials, and Google Maps contact section |
+| `/products` | Product catalog with live search and direct WhatsApp ordering links |
+| `/portfolio` | Visual archive of fabricated custom iron and metal projects |
+| `/gallery` | Ornamental pattern gallery with categories |
+| `/article` | Articles and publications view (reserved for future updates) |
+| `/robots.txt` | Search engine crawler rules |
+| `/sitemap.xml` | Generated sitemap for indexing |
 
-One known limit: white text on the Figma orange has a contrast ratio of about 2.8 to 1, which is below the 4.5 to 1 that WCAG AA asks for. To use a darker orange, change `--color-brand` in `src/app/globals.css`.
+Legacy routes `/cart` and `/produk` automatically issue permanent redirects (308) to `/products`.
 
-## Editing content
+---
 
-Most changes need no code beyond one data file.
+## Data Fetching & Caching Strategy
 
-- Change a phone number, the address, the map, or a menu link in `src/data/site.ts`. The site uses two WhatsApp numbers: one for general questions and one for orders.
-- Change the hero slides, services, or materials in `src/data/content.ts`.
-- Add products, portfolio projects, or patterns in the backend admin panel at `/admin`, not in this repository.
+- **Incremental Static Regeneration (ISR)**: Public pages cache data with a default revalidation period of 1 hour.
+- **Instant Cache Clearing**: When updates are published in the admin panel, the backend issues a webhook to `POST /api/revalidate`, executing `revalidateTag(tag, { expire: 0 })` for immediate updates.
+- **Fail-Safe Fallbacks**: If the API is temporarily unreachable during rebuilds, Next.js retains the last known healthy render rather than showing a broken page.
+- **Network Resilience**: The API client enforces a 6-second timeout with automated retries on transient network errors.
 
-Some values in `src/data/site.ts` are still empty: the business email, the social media links, and the video link. The page hides the email and the social links until you fill them in. The "watch video" button in the about section stays inactive until the video link exists.
+---
 
-## Project layout
+## Modern Web Standards & Accessibility
+
+- **Core Web Vitals Optimization**: The above-the-fold hero slide image is flagged with `priority`, ensuring Next.js sets `fetchpriority="high"` and eliminates lazy-loading delays on the Largest Contentful Paint (LCP) element.
+- **Layout Shift Prevention**: Google Maps embed iframes declare explicit fallback dimensions (`width={600}` and `height={450}`) alongside aspect-ratio styling, preventing Cumulative Layout Shift (CLS).
+- **Layout Stability**: Configures `scrollbar-gutter: stable` to avoid horizontal layout jumps between scrollable and short views.
+- **Touch Targets**: Pattern gallery dot indicators provide an expanded 28px tap target size to ensure effortless interaction on coarse-pointer mobile screens.
+- **Gesture Containment**: The pattern carousel container uses `overscroll-behavior-inline: contain` to prevent touch-swiping gestures from triggering browser back/forward navigation.
+- **Typographic Balance**: Heading levels use `text-wrap: balance` for symmetrical wrapping across varying viewport widths, and body copy uses `text-wrap: pretty` to eliminate orphaned words.
+- **High Contrast Support**: Interactive focus rings automatically adapt to the system highlight color when Forced Colors Mode is active.
+- **Reduced Motion Support**: All marquee tracks and auto-advancing carousels automatically pause or convert to manual scroll controls when `prefers-reduced-motion: reduce` is detected.
+
+---
+
+## Project Structure
 
 ```
 src/
-  app/             Pages, layout, sitemap, robots.txt, error and 404 pages
+  app/          Next.js App Router pages, layout, error boundaries, robots, and sitemap
   components/
-    layout/        Navbar and footer
-    sections/      Home page sections, product grid, portfolio and pattern carousels
-    ui/            Button, section heading, page header, image wrapper
-  data/            Site settings and static content
-  lib/             API client, formatting helpers, WhatsApp links, media query hook
-  types/           TypeScript types for API data
-public/images/     Local photos and banner images
+    layout/     Responsive navigation bar and site footer
+    sections/   Hero slider, about, services, materials, pattern gallery, and contact map
+    ui/         ButtonLink, ContentImage, PageHeader, SectionHeading, and JsonLd schema
+  data/         Static copy, WhatsApp configuration, and service definitions
+  lib/          API client, metadata utilities, and WhatsApp URL builders
+  types/        TypeScript interfaces for API payloads and frontend components
+public/
+  images/       Optimized static banners, hero photography, and material swatches
 ```
 
-## Deploying to Vercel
+---
 
-1. Push this repository to GitHub and import it at [vercel.com/new](https://vercel.com/new).
-2. Add the environment variables `API_BASE_URL`, `NEXT_PUBLIC_SITE_URL`, and `REVALIDATE_SECRET` (the same value as in the backend).
-3. Deploy.
+## Deployment to Vercel
 
-`vercel.json` runs the site in Singapore (`sin1`), the closest region to Indonesia. Deploy the backend first, because this site needs its address. The backend README has the full steps.
+1. Push your repository branch to GitHub.
+2. Import the project into the [Vercel Dashboard](https://vercel.com/new).
+3. Set your environment variables: `API_BASE_URL`, `NEXT_PUBLIC_SITE_URL`, and `REVALIDATE_SECRET`.
+4. Deploy.
 
-To see an admin change right away, redeploy the site. Vercel then rebuilds the pages with fresh data.
+The included `vercel.json` designates deployment to Singapore (`sin1`) for optimal low latency across Indonesia.

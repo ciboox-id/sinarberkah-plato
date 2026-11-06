@@ -30,6 +30,7 @@ export function ContentImage({
       alt={alt}
       fill
       sizes={sizes}
+      priority={preload}
       preload={preload}
       unoptimized={!isOptimizableImage(src)}
       className={className}

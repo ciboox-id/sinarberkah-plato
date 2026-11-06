@@ -20,6 +20,8 @@ export function Contact() {
           <iframe
             title="Lokasi Bengkel Sinar Berkah di Google Maps"
             src={siteConfig.mapEmbedUrl}
+            width={600}
+            height={450}
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
